@@ -1,3 +1,5 @@
+*This project has been created as part of the 42 curriculum by asaadane.*
+
 # ft_printf
 
 A lightweight, unbuffered re-implementation of the standard C library `printf` function, developed as part of the **42 Network** curriculum.
@@ -146,12 +148,17 @@ To maintain clarity and accurate expectations, please note the scope of this imp
 
 | File / Directory | Primary Responsibility | Key Functions / Contents |
 | :--- | :--- | :--- |
-| `ft_printf.h` | Header declarations, macros, standard includes | Prototypes for library functions |
-| `ft_printf.c` | Entry point, variadic lifecycle, and specifier dispatcher | `ft_printf`, `ft_check_symb` |
-| `ft_printf_tools.c` | Basic character, string, and base-10 integer output | `ft_put_char`, `ft_put_str`, `ft_put_nbr`, `ft_put_unbr` |
-| `ft_printf_tools_x.c` | Base-16 hexadecimal and memory pointer formatting | `ft_put_lowhex`, `ft_put_uphex`, `ft_put_ptr` |
+| `includes/ft_printf.h` | Header declarations, macros, standard includes | Prototypes for library functions |
+| `src/ft_printf.c` | Entry point, variadic lifecycle, and specifier dispatcher | `ft_printf`, `ft_check_symb` |
+| `src/ft_put_char.c` | Single character standard output writer | `ft_put_char` |
+| `src/ft_put_str.c` | String output writer with null-pointer handling | `ft_put_str` |
+| `src/ft_put_nbr.c` | Signed decimal integer formatting and output | `ft_put_nbr` |
+| `src/ft_put_unbr.c` | Unsigned decimal integer formatting and output | `ft_put_unbr` |
+| `src/ft_put_lowhex.c` | Lowercase base-16 hexadecimal formatting | `ft_put_lowhex` |
+| `src/ft_put_uphex.c` | Uppercase base-16 hexadecimal formatting | `ft_put_uphex` |
+| `src/ft_put_ptr.c` | Void pointer hexadecimal memory address formatting | `ft_put_ptr` |
 | `Makefile` | Build configuration and archive generation | Targets: `all`, `clean`, `fclean`, `re` |
-| `en.subject.pdf` | Official 42 project subject specification | Project requirements and grading rules |
+| `docs/en.subject.pdf` | Official 42 project subject specification | Project requirements and grading rules |
 | `assets/validation/` | Visual validation captures and evidence assets | Evaluation grade, build, test, and git captures |
 
 ---
@@ -166,14 +173,24 @@ Ft_printf_42-cursus/
 │       ├── ft_printf-100.png     # Official 42 peer-evaluation result (100%)
 │       ├── functional-tests.png  # Functional test execution for all conversions
 │       └── git-integrity.png     # Git workspace and diff integrity verification
-├── en.subject.pdf                # Official 42 ft_printf project subject specification
-├── Makefile                      # Build automation script
-├── README.md                     # Project documentation
-├── ft_printf.c                   # Core parsing loop and dispatcher
-├── ft_printf.h                   # Function prototypes and definitions
-├── ft_printf_tools.c             # Character, string, and integer printing tools
-└── ft_printf_tools_x.c           # Hexadecimal and pointer address printing tools
+├── docs/
+│   └── en.subject.pdf            # Official 42 ft_printf project subject specification
+├── includes/
+│   └── ft_printf.h               # Function prototypes and definitions
+├── src/
+│   ├── ft_printf.c               # Core parsing loop and dispatcher
+│   ├── ft_put_char.c             # Character printing utility (%c, %%)
+│   ├── ft_put_lowhex.c           # Lowercase hexadecimal conversion (%x)
+│   ├── ft_put_nbr.c              # Signed decimal integer conversion (%d, %i)
+│   ├── ft_put_ptr.c              # Pointer address conversion (%p)
+│   ├── ft_put_str.c              # String printing utility (%s)
+│   ├── ft_put_unbr.c             # Unsigned decimal integer conversion (%u)
+│   └── ft_put_uphex.c            # Uppercase hexadecimal conversion (%X)
+├── Makefile                      # Modular build automation script
+└── README.md                     # Project documentation
 ```
+
+> **Note on 42 Submission Rules:** The 42 subject accepts source and header files located either directly at the root or within subdirectories (`*.h`, `*/*.h`, `*.c`, `*/*.c`). This repository organizes the codebase into `src/`, `includes/`, and `docs/` for clean modularity, separation of concerns, and presentation.
 
 ---
 
@@ -190,9 +207,9 @@ Ft_printf_42-cursus/
 
 ## Project Statistics
 
-- **C Source Files:** 3 (`ft_printf.c`, `ft_printf_tools.c`, `ft_printf_tools_x.c`)
-- **Header Files:** 1 (`ft_printf.h`)
-- **Total Lines of C Code:** ~231 lines (concise, modular footprint)
+- **C Source Files:** 8 (`src/ft_printf.c`, `src/ft_put_char.c`, `src/ft_put_str.c`, `src/ft_put_nbr.c`, `src/ft_put_unbr.c`, `src/ft_put_lowhex.c`, `src/ft_put_uphex.c`, `src/ft_put_ptr.c`)
+- **Header Files:** 1 (`includes/ft_printf.h`)
+- **Total Lines of C Code:** ~250 lines (concise, modular footprint)
 - **Output Artifact:** Static library `libftprintf.a`
 
 ---
@@ -282,7 +299,7 @@ Compile your application with `libftprintf.a`:
 make
 
 # 2. Compile and link with your source code
-cc main.c -L. -lftprintf -o demo
+cc main.c -I includes -L. -lftprintf -o demo
 
 # 3. Run the executable
 ./demo
