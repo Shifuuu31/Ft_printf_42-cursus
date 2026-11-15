@@ -8,10 +8,12 @@ A lightweight, unbuffered re-implementation of the standard C library `printf` f
 [![42 Cursus](https://img.shields.io/badge/42-Cursus-black.svg)](#42-cursus-context)
 [![Project](https://img.shields.io/badge/Project-ft__printf-brightgreen.svg)](#project-overview)
 [![Scope](https://img.shields.io/badge/Scope-Mandatory%20Scope-orange.svg)](#supported-conversions)
-[![Score](https://img.shields.io/badge/Score-100%2F100-success.svg)](#validation-evidence)
+[![Score](https://img.shields.io/badge/Score-100%2F100-success.svg)](assets/validation/ft_printf-100.png)
 
 <p align="center">
-  <img src="assets/validation/ft_printf-100.png" alt="42 ft_printf Evaluation Result - 100%" width="850">
+  <a href="assets/validation/ft_printf-100.png">
+    <img src="assets/validation/ft_printf-100.png" alt="42 ft_printf Evaluation Result - 100%" width="850">
+  </a>
 </p>
 
 ---
@@ -34,6 +36,7 @@ A lightweight, unbuffered re-implementation of the standard C library `printf` f
 - [Validation Evidence](#validation-evidence)
 - [Known Platform Differences and Edge Cases](#known-platform-differences-and-edge-cases)
 - [Learning Outcomes](#learning-outcomes)
+- [Resources](#resources)
 - [Author](#author)
 - [License](#license)
 
@@ -148,18 +151,18 @@ To maintain clarity and accurate expectations, please note the scope of this imp
 
 | File / Directory | Primary Responsibility | Key Functions / Contents |
 | :--- | :--- | :--- |
-| `includes/ft_printf.h` | Header declarations, macros, standard includes | Prototypes for library functions |
-| `src/ft_printf.c` | Entry point, variadic lifecycle, and specifier dispatcher | `ft_printf`, `ft_check_symb` |
-| `src/ft_put_char.c` | Single character standard output writer | `ft_put_char` |
-| `src/ft_put_str.c` | String output writer with null-pointer handling | `ft_put_str` |
-| `src/ft_put_nbr.c` | Signed decimal integer formatting and output | `ft_put_nbr` |
-| `src/ft_put_unbr.c` | Unsigned decimal integer formatting and output | `ft_put_unbr` |
-| `src/ft_put_lowhex.c` | Lowercase base-16 hexadecimal formatting | `ft_put_lowhex` |
-| `src/ft_put_uphex.c` | Uppercase base-16 hexadecimal formatting | `ft_put_uphex` |
-| `src/ft_put_ptr.c` | Void pointer hexadecimal memory address formatting | `ft_put_ptr` |
-| `Makefile` | Build configuration and archive generation | Targets: `all`, `clean`, `fclean`, `re` |
-| `docs/en.subject.pdf` | Official 42 project subject specification | Project requirements and grading rules |
-| `assets/validation/` | Visual validation captures and evidence assets | Evaluation grade, build, test, and git captures |
+| [`includes/ft_printf.h`](includes/ft_printf.h) | Header declarations, macros, standard includes | Prototypes for library functions |
+| [`src/ft_printf.c`](src/ft_printf.c) | Entry point, variadic lifecycle, and specifier dispatcher | `ft_printf`, `ft_check_symb` |
+| [`src/ft_put_char.c`](src/ft_put_char.c) | Single character standard output writer | `ft_put_char` |
+| [`src/ft_put_str.c`](src/ft_put_str.c) | String output writer with null-pointer handling | `ft_put_str` |
+| [`src/ft_put_nbr.c`](src/ft_put_nbr.c) | Signed decimal integer formatting and output | `ft_put_nbr` |
+| [`src/ft_put_unbr.c`](src/ft_put_unbr.c) | Unsigned decimal integer formatting and output | `ft_put_unbr` |
+| [`src/ft_put_lowhex.c`](src/ft_put_lowhex.c) | Lowercase base-16 hexadecimal formatting | `ft_put_lowhex` |
+| [`src/ft_put_uphex.c`](src/ft_put_uphex.c) | Uppercase base-16 hexadecimal formatting | `ft_put_uphex` |
+| [`src/ft_put_ptr.c`](src/ft_put_ptr.c) | Void pointer hexadecimal memory address formatting | `ft_put_ptr` |
+| [`Makefile`](Makefile) | Build configuration and archive generation | Targets: `all`, `clean`, `fclean`, `re` |
+| [`docs/en.subject.pdf`](docs/en.subject.pdf) | Official 42 project subject specification | Project requirements and grading rules |
+| [`assets/validation/`](assets/validation/) | Visual validation captures and evidence assets | Evaluation grade, build, test, and git captures |
 
 ---
 
@@ -326,23 +329,25 @@ The following captures demonstrate verifiable evidence of 42 evaluation results,
 Official 42 Network project peer-evaluation result verifying a 100% grade on the mandatory project scope:
 
 <p align="center">
-  <img src="assets/validation/ft_printf-100.png" alt="42 ft_printf Evaluation Result - 100%" width="850">
+  <a href="assets/validation/ft_printf-100.png">
+    <img src="assets/validation/ft_printf-100.png" alt="42 ft_printf Evaluation Result - 100%" width="850">
+  </a>
 </p>
 
 ### 2. Build and Makefile Validation
-Demonstrates clean execution of `make fclean`, followed by a full rebuild with `make re` (highlighting compiler invocation `cc -Wall -Wextra -Werror` and archive creation `ar -rc libftprintf.a`), and cleanup with `make fclean`:
+Demonstrates clean execution of `make fclean`, followed by a full rebuild with `make re` (highlighting compiler invocation `cc -Wall -Wextra -Werror -I includes` and archive creation `ar -rc libftprintf.a`), and cleanup with `make fclean`:
 
-![Build validation](assets/validation/build-validation.png)
+[![Build validation](assets/validation/build-validation.png)](assets/validation/build-validation.png)
 
 ### 3. Functional Test Execution
 Demonstrates compilation of a test harness against `libftprintf.a` validating all 9 mandatory conversions (`%c`, `%s`, `%p`, `%d`, `%i`, `%u`, `%x`, `%X`, `%%`) and edge cases (`INT_MIN`, `INT_MAX`, `UINT_MAX`, empty strings, NULL pointers):
 
-![Functional test output](assets/validation/functional-tests.png)
+[![Functional test output](assets/validation/functional-tests.png)](assets/validation/functional-tests.png)
 
 ### 4. Git Integrity Verification
 Confirms repository hygiene via `git diff --check`, `git status --short`, and `git diff --stat`, verifying that core C implementation files and Makefile remain strictly untouched:
 
-![Git integrity verification](assets/validation/git-integrity.png)
+[![Git integrity verification](assets/validation/git-integrity.png)](assets/validation/git-integrity.png)
 
 ---
 
@@ -372,6 +377,16 @@ Developing this project provided deep hands-on experience with:
 - **Number System Transformations:** Implementing clean mathematical recursion for base conversions (binary/decimal to hexadecimal and ASCII string representations).
 - **Static Library Packaging:** Creating reusable Unix archives (`.a`) using the `ar` utility.
 - **Strict Compiler Flags:** Writing code that compiles cleanly under strict compiler flags (`-Wall -Wextra -Werror`).
+
+---
+
+## Resources
+
+- [write(2) Linux Manual Page](https://man7.org/linux/man-pages/man2/read.2.html)
+- [stdarg(3) Linux Manual Page](https://man7.org/linux/man-pages/man3/stdarg.3.html)
+- [printf(3) Linux Manual Page](https://man7.org/linux/man-pages/man3/printf.3.html)
+- 42 Project Subject: [en.subject.pdf](docs/en.subject.pdf)
+- 42 Intra Evaluation Result: [ft_printf-100.png](assets/validation/ft_printf-100.png) (100/100 score)
 
 ---
 
